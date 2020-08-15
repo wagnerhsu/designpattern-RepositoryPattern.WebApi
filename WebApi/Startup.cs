@@ -1,20 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DataAccess.EFCore;
 using DataAccess.EFCore.Repositories;
 using DataAccess.EFCore.UnitOfWorks;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace WebApi
 {
@@ -37,10 +30,13 @@ namespace WebApi
                 b => b.MigrationsAssembly(typeof(ApplicationContext).Assembly.FullName)));
 
             #region Repositories
+
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IDeveloperRepository, DeveloperRepository>();
             services.AddTransient<IProjectRepository, ProjectRepository>();
-            #endregion
+
+            #endregion Repositories
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 

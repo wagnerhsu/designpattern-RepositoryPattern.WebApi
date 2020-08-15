@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Interfaces
 {
@@ -8,6 +6,7 @@ namespace Domain.Interfaces
     {
         IDeveloperRepository Developers { get; }
         IProjectRepository Projects { get; }
+
         int Complete();
     }
 }
